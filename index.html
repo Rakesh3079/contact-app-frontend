@@ -28,52 +28,32 @@
     button:hover {
       background-color: #218838;
     }
+    #formResponse {
+      margin-top: 10px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <h2>Contact / Order Form</h2>
+
+  <h2>Contact Us</h2>
 
   <form id="contactForm">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="email" name="email" placeholder="Your Email" required />
-    <textarea name="message" placeholder="Your Message or Order Details" required></textarea>
+    <input type="text" id="firstName" name="firstName" required placeholder="First Name">
+    <input type="text" id="lastName" name="lastName" required placeholder="Last Name">
+    <input type="email" id="email" name="email" required placeholder="Your Email Address">
+    <textarea id="message" name="message" required placeholder="Your Message / Description"></textarea>
     <button type="submit">Send Message</button>
   </form>
 
-  <p id="responseMsg"></p>
+  <div id="formResponse"></div>
 
-  <script>
-    const form = document.getElementById('contactForm');
-    const responseMsg = document.getElementById('responseMsg');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  <div id="formResponse"></div>
 
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const res = await fetch('https://contact-app-backend-ivhu.onrender.com/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)    
-        });
-
-        const result = await res.json();
-
-        if (res.ok) {
-          responseMsg.textContent = "✅ Message sent successfully!";
-          form.reset();
-        } else {
-          responseMsg.textContent = "❌ Failed to send message. Try again.";
-        }
-      } catch (error) {
-        responseMsg.textContent = "❌ Server error.";
-        console.error(error);
-      }
-    });
-  </script>
+  <!-- Your external script -->
+  <script src="script.js"></script>
 
 </body>
 </html>
