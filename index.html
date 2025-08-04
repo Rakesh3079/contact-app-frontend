@@ -1,36 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Contact Us</title>
   <style>
+    * {
+     box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 40px;
       max-width: 500px;
       margin: auto;
-      background: #f5f5f5;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      animation: fadeIn 1s ease-in-out;
     }
-    input, textarea, button {
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      animation: slideUp 0.8s ease;
+    }
+
+    input, textarea {
       width: 100%;
       padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
+      margin: 12px 0;
+      border: 1px solid #ddd;
       border-radius: 8px;
-      box-sizing: border-box;
+      transition: 0.3s border;
+      font-size: 15px;
     }
+
+    input:focus, textarea:focus {
+      border-color: #28a745;
+      outline: none;
+    }
+
     button {
+      width: 100%;
+      padding: 12px;
       background-color: #28a745;
       color: white;
       border: none;
+      border-radius: 8px;
       cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
     }
+
     button:hover {
       background-color: #218838;
     }
+
     #formResponse {
-      margin-top: 10px;
+      margin-top: 16px;
       font-weight: bold;
+      text-align: center;
+      color: #2d3436;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      input, textarea, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    }
+
+   @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 
@@ -50,6 +119,9 @@
   </form>
 
   <div id="formResponse"></div>
+  <div id="loader" style="display:none; text-align: center;">
+    <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading..." width="40">
+  </div>
 
   <!-- Your external script -->
   <script src="Script.js"></script>
